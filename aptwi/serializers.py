@@ -1,19 +1,22 @@
 from rest_framework import serializers
-from aptwi.models import Genre
-'''
-class GenreSerializer(serializers.Serializer):
-    id = serializers.IntegerField(read_only=True)
-    name = serializers.CharField(max_length=200)
+from aptwi.models import Aluno, Avaliacao, Questao, Resposta
 
-    def create(self, validated_data):
-	return Genre.objects.create(**validated_data)
-
-    def update(self, instance, validated_data):
-	instance.name = validated_data.get('name', instance.name)
-	return instance
-'''
-
-class GenreSerializer(serializers.ModelSerializer):
+class AlunoSerializer(serializers.ModelSerializer):
     class Meta:
-	model = Genre
-	fields = ('id', 'name')
+	model = Aluno
+	fields = ('id', 'ra', 'nome_escola')
+
+class AvaliacaoSerializer(serializers.ModelSerializer):
+    class Meta:
+	model = Avaliacao
+	fields = ('id', 'aluno', 'sugestao', 'data_hora', 'resp_quest1', 'resp_quest2', 'resp_quest3')
+
+class QuestaoSerializer(serializers.ModelSerializer):
+    class Meta:
+	model = Questao
+	fields = ('id', 'questao')
+
+class RespostaSerializer(serializers.ModelSerializer):
+    class Meta:
+	model = Resposta
+	fields = ('id', 'questao', 'resposta')
