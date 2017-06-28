@@ -17,10 +17,10 @@ class Avaliacao(models.Model):
 	
 	aluno = models.ForeignKey('Aluno')
 	sugestao = models.CharField(max_length=200, null=True, help_text="Escreva sua sugestao")
-	data_hora = models.DateTimeField(null=False)
-	resp_quest1 = models.CharField(max_length=1, null=False, help_text="Digite a resposta")
-	resp_quest2 = models.CharField(max_length=1, null=False, help_text="Digite a resposta")
-	resp_quest3 = models.CharField(max_length=1, null=False, help_text="Digite a resposta")
+	data_hora = models.DateTimeField(auto_now_add=True)
+	resp_quest1 = models.CharField(max_length=2, null=True, help_text="Digite a resposta")
+	resp_quest2 = models.CharField(max_length=2, null=True, help_text="Digite a resposta")
+	resp_quest3 = models.CharField(max_length=2, null=True, help_text="Digite a resposta")
 	
 	def __unicode__(self):
 
